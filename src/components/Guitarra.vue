@@ -7,9 +7,7 @@ const props = defineProps({
         required:true
     }
 })
-const incrementar = ()=>{
-    numero.value++
-}
+defineEmits(['agregar-carrito'])
 </script>
 <template>
     <div class="col-md-6 col-lg-4 my-4 row align-items-center">
@@ -26,7 +24,7 @@ const incrementar = ()=>{
             <button 
                 type="button"
                 class="btn btn-dark w-100 "
-                v-on:click="incrementar"
+                @click="$emit('agregar-carrito')"
             >Agregar al Carrito</button>
         </div>
     </div><!-- FIN GUITARRA -->
