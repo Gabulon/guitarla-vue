@@ -1,4 +1,12 @@
 <script setup>
+const props = defineProps(
+    {
+        carrito:{
+            type:Array,
+            required: true
+        }
+    }
+)
 </script>
 <template>
     <header class="py-5 header">
@@ -16,7 +24,10 @@
                         <img class="img-fluid" src="/img/carrito.png" alt="imagen carrito" />
 
                         <div id="carrito" class="bg-white p-3">
-                            <p class="text-center">El carrito esta vacio</p>
+                            <p v-if="carrito.length===0" class="text-center m-0">
+                                El carrito esta vacio
+                            </p>
+                           <div v-else>
                             <table class="w-100 table">
                                 <thead>
                                     <tr>
@@ -67,6 +78,7 @@
                             <button class="btn btn-dark w-100 mt-3 p-2">Vaciar Carrito</button>
                         </div>
                     </div>
+                </div> 
                 </nav>
             </div><!--.row-->
 
