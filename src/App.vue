@@ -1,5 +1,5 @@
 <script setup>
- import {ref,reactive,onMounted} from 'vue'
+ import {ref,reactive,onMounted,watch} from 'vue'
  import {db} from './data/guitarras'
  import Guitarra from './components/Guitarra.vue'
  import Header from './components/Header.vue'
@@ -7,6 +7,12 @@
  const guitarras=ref([])
  const carrito= ref([])
  const guitarra = ref({})
+
+watch(carrito,() =>{
+guardarLocalStorage()
+},{
+    deep:true
+})
 
 onMounted(()=>{
     guitarras.value=db
@@ -28,8 +34,6 @@ const agregarCarrito = (guitarra)=>{
         guitarra.cantidad=1;
         carrito.value.push(guitarra);
     }
-    
-    guardarLocalStorage();
 }
 const decrementarCatidad =(id)=>{
     const index=carrito.value.findIndex(producto => producto.id === id)
