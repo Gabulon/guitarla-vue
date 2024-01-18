@@ -6,10 +6,11 @@
  import Footer from './components/Footer.vue'
  const guitarras=ref([])
  const carrito= ref([])
-
+ const guitarra = ref({})
 
 onMounted(()=>{
     guitarras.value=db
+    guitarra.value=db[3]
 })
 const agregarCarrito = (guitarra)=>{
     const existeCarrito=carrito.value.findIndex(producto => producto.id === guitarra.id)
@@ -36,8 +37,10 @@ const incrementarCatidad =(id)=>{
 <template>  
 <Header 
 :carrito="carrito"
+:guitarra="guitarra"
 @incrementar-cantidad="incrementarCatidad"
 @decrementar-cantidad="decrementarCatidad"
+@agregar-carrito="agregarCarrito"
 />
     <main class="container-xl mt-5">
         <h2 class="text-center">Nuestra Colección</h2>
