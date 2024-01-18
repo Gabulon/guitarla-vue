@@ -11,7 +11,15 @@
 onMounted(()=>{
     guitarras.value=db
     guitarra.value=db[3]
+    const carritoStorage = localStorage.getItem('carrito')
+    if(carritoStorage){
+        carrito.value=JSON.parse(carritoStorage)
+    }
 })
+
+const guardarLocalStorage=()=>{
+    localStorage.setItem('carrito',JSON.stringify(carrito.value))
+}
 const agregarCarrito = (guitarra)=>{
     const existeCarrito=carrito.value.findIndex(producto => producto.id === guitarra.id)
     if(existeCarrito>=0){
@@ -21,6 +29,7 @@ const agregarCarrito = (guitarra)=>{
         carrito.value.push(guitarra);
     }
     
+    guardarLocalStorage();
 }
 const decrementarCatidad =(id)=>{
     const index=carrito.value.findIndex(producto => producto.id === id)
