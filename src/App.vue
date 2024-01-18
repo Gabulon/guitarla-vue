@@ -21,11 +21,15 @@ const agregarCarrito = (guitarra)=>{
     }
     
 }
-const decrementarCatidad =()=>{
-console.log("menos")
+const decrementarCatidad =(id)=>{
+    const index=carrito.value.findIndex(producto => producto.id === id)
+    if(carrito.value[index].cantidad<=1) return
+    carrito.value[index].cantidad--
 }
-const incrementarCatidad =()=>{
-console.log("mas")
+const incrementarCatidad =(id)=>{
+    const index=carrito.value.findIndex(producto => producto.id === id)
+    if(carrito.value[index].cantidad>=5) return
+    carrito.value[index].cantidad++
 }
 </script>
 

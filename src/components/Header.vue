@@ -58,7 +58,7 @@ defineEmits(['decrementar-cantidad','incrementar-cantidad'])
                                             <button
                                                 type="button"
                                                 class="btn btn-dark"
-                                                @click="$emit('decrementar-cantidad')"
+                                                @click="$emit('decrementar-cantidad',prodcucto.id)"
                                             >
                                                 -
                                             </button>
@@ -66,7 +66,7 @@ defineEmits(['decrementar-cantidad','incrementar-cantidad'])
                                             <button
                                                 type="button"
                                                 class="btn btn-dark"
-                                                @click="$emit('incrementar-cantidad')"
+                                                @click="$emit('incrementar-cantidad',prodcucto.id)"
                                             >
                                                 +
                                             </button>
